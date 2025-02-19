@@ -12,7 +12,7 @@
         <h1>
             the value for number is:
             <script type="text/javascript">
-              document.write(objWeatherJson)
+              document.write(result)
             </script>
           </h1>
         
@@ -23,6 +23,7 @@
         // Start GLobal Variables
         const strBaseURL = 'https://api.open-meteo.com/v1/forecast?latitude=36.1628&longitude=-85.5016&current=temperature_2m,precipitation,cloud_cover&hourly=temperature_2m,relative_humidity_2m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timeformat=unixtime&timezone=auto&past_days=5'
         const objWeatherJson = fetch(strBaseURL)
+        const result = json.stringify(objWeatherJson)
         // End Global Variables
     </script>
 </body>
