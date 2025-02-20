@@ -18,20 +18,9 @@
         const tempInfo = document.getElementById('#tempData')
         // End Global Variables
 
-        
-        async function getTemperature(){
-            try{
-                const objResponse = await fetch(strBaseURL)
-                if(!objResponse){
-                    throw new Error(`HTTP Error Status: ${objResponse}`)
-                }
-                const objData = await objResponse.json()
-                console.log(objData.current.temperature_2m)
-                document.querySelector('#tempData').innerHTML = (`<h1> ${objData.current.temperature_2m} </h1>`)
-            }catch(objError){
-                document.querySelector('#tempData').innerHTML = (`<h1> Error fetching objData </h1>`)
-            }
-        }
+        $.getJSON(strBaseURL).then(objData => {
+            console.log(objData.current.temperature_2m)
+        })
     </script>
 </body>
 </html>
