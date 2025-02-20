@@ -17,9 +17,9 @@
         const strBaseURL = 'https://api.open-meteo.com/v1/forecast?latitude=36.1628&longitude=-85.5016&current=temperature_2m,precipitation,cloud_cover&hourly=temperature_2m,relative_humidity_2m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timeformat=unixtime&timezone=auto&past_days=5'
         // End Global Variables
 
-        $.getJSON(strBaseURL.then(objData => {
+        $.getJSON(strBaseURL).then(objData => {
             console.log(objData.current.temperature_2m)
-        }))
+        })
     </script>
 </body>
 </html>
