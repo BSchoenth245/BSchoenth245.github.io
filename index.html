@@ -21,7 +21,7 @@
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.current.temperature_2m)
             let strHTML = objData.current.temperature_2m
-            $('#tempData').append(`<h1>strHTML</h1>`)
+            $('#tempData').append(`<h1>${strHTML}</h1>`)
         })
     </script>
 </body>
