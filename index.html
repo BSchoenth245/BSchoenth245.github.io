@@ -26,9 +26,9 @@
                     throw new Error(`HTTP Error Status: ${objResponse}`)
                 }
                 const objData = await objResponse.json()
-                console.log(objData.current.temperature_2m)
+                document.querySelector('#tempData').innerHTML = objData.current.temperature_2m
             }catch(objError){
-                console.log("Error fetching objData")
+                document.querySelector('#tempData').innerHTML = 'Error fetching objData'
             }
         }
     </script>
