@@ -23,7 +23,7 @@
             var longitude = position.coords.longitude;
         })
         // Start GLobal Variables
-        const strBaseURL = 'https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=cloud_cover&minutely_15=temperature_2m,relative_humidity_2m&hourly=temperature_2m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timeformat=unixtime&timezone=America%2FChicago'
+        const strBaseURL = 'https://api.open-meteo.com/v1/forecast?latitude=${'#latitude'}&longitude=${'#longitude'}&current=cloud_cover&minutely_15=temperature_2m,relative_humidity_2m&hourly=temperature_2m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timeformat=unixtime&timezone=America%2FChicago'
         const tempInfo = document.getElementById('#tempData')
         const humidData = document.getElementById('#humidData')
         // End Global Variables
