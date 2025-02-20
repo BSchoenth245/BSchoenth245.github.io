@@ -19,7 +19,7 @@
         // End Global Variables
 
         $.getJSON(strBaseURL).then(objData => {
-            tempInfo.innerHTML = "Temperature: " + objData.current.temperature_2m + "F"
+            console.log(objData.current.temperature_2m)
         })
     </script>
 </body>
