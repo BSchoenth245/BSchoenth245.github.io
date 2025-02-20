@@ -22,12 +22,12 @@
 
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.current.temperature_2m)
-            let strHTML = objData.current.temperature_2m
+            let strTemp = objData.current.temperature_2m
             $('#tempData').append(`<h1>Temperature: ${strHTML}</h1>`)
         })
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.hourly.relative_humidity_2m)
-            let strHTML = objData.hourly.relative_humidity_2m
+            let strHumid = objData.hourly.relative_humidity_2m[0]
             $('#humidData').append(`<h1>Humidity: ${strHTML}</h1>`)
         })
     </script>
