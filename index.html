@@ -9,7 +9,7 @@
 <body>
     <div class="d-flex justify-content-center align-items-center vh-50">
         <div class="bg-dark card-body d-flex justify-content-center align-items-center col-12 col-md-8 col-lg-6">
-            <div id="tempData"></div>
+            <div  id="tempData"></div>
             <div id="humidData"></div>
         </div>
     </div>
@@ -27,12 +27,12 @@
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.current.temperature_2m)
             let strTemp = objData.current.temperature_2m
-            $('#tempData').append(`<blockquote><p>Temperature: ${strTemp}</p></blockquote>`)
+            $('#tempData').append(`<p class="col-12">Temperature: ${strTemp}</p>`)
         })
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.hourly.relative_humidity_2m)
             let strHumid = objData.hourly.relative_humidity_2m
-            $('#humidData').append(`<p>Humidity: ${strHumid.at(0)}</p>`)
+            $('#humidData').append(`<p class="col-12">Humidity: ${strHumid.at(0)}</p>`)
         })
     </script>
 </body>
