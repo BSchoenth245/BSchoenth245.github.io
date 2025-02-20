@@ -34,10 +34,10 @@
             let strHumid = objData.hourly.relative_humidity_2m
             $('#humidData').append(`<p class="col-12">Humidity: ${strHumid.at(0)}</p>`)
         })
-        .getJSON(strBaseURL).then(objData => {
+        $.getJSON(strBaseURL).then(objData => {
             console.log(objData.current.cloud_cover)
-            let strHumid = objData.current.cloud_cover
-            $('#humidData').append(`<p class="col-12">Weather: ${strClouds}</p>`)
+            let strWeater = objData.current.cloud_cover
+            $('#cloudData').append(`<p class="col-12">Weather: ${strClouds}</p>`)
         })
     </script>
 </body>
