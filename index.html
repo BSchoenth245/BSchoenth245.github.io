@@ -27,9 +27,9 @@
                 }
                 const objData = await objResponse.json()
                 console.log(objData.current.temperature_2m)
-                document.querySelector('#tempData').innerHTML = objData.current.temperature_2m
+                document.querySelector('#tempData').innerHTML = (`<h1> ${objData.current.temperature_2m} </h1>`)
             }catch(objError){
-                document.querySelector('#tempData').innerHTML = 'Error fetching objData'
+                document.querySelector('#tempData').innerHTML = (`<h1> Error fetching objData </h1>`)
             }
         }
     </script>
