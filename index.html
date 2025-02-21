@@ -25,7 +25,7 @@
         })
         function fillData(strLat,strLong){
         // Start GLobal Variables
-        const strBaseURL = 'https://api.open-meteo.com/v1/forecast?latitude=36.1628&longitude=-85.5016&current=cloud_cover&minutely_15=temperature_2m,relative_humidity_2m&hourly=temperature_2m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timeformat=unixtime&timezone=America%2FChicago'
+        const strBaseURL = `https://api.open-meteo.com/v1/forecast?latitude=${strLat}&longitude=${strLong}&current=cloud_cover&minutely_15=temperature_2m,relative_humidity_2m&hourly=temperature_2m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timeformat=unixtime&timezone=America%2FChicago`
         const tempInfo = document.getElementById('#tempData')
         const humidData = document.getElementById('#humidData')
         
