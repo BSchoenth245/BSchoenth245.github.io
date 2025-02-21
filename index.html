@@ -53,6 +53,7 @@
         })
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.current.cloud_cover)
+            console.log(objData.current.is_day)
             let strWeather = objData.current.cloud_cover
             let blnIsDay = objData.current.is_day
             if(strWeather > 75){
