@@ -37,13 +37,13 @@
             console.log(objData.minutely_15.temperature_2m)
             let strTemp = objData.minutely_15.temperature_2m
             if(strTemp > 75){
-            $('#tempData').append(`<h2 class="col-12 pl-0 bi bi-thermometer-sun"> ${strTemp.at(0)}°F</h2>`)
+            $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-sun"> ${strTemp.at(0)}°F</h2>`)
             } else if(strTemp >= 50 && strTemp <= 75){
-                $('#tempData').append(`<h2 class="col-12 pl-0 bi bi-thermometer-half"> ${strTemp.at(0)}°F</h2>`)
+                $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-half"> ${strTemp.at(0)}°F</h2>`)
             }else if(strTemp >= 33 && strTemp < 50){
-                $('#tempData').append(`<h2 class="col-12 pl-0 bi bi-thermometer-low"> ${strTemp.at(0)}°F</h2>`)
+                $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-low"> ${strTemp.at(0)}°F</h2>`)
             }else{
-                $('#tempData').append(`<h2 class="col-12 pl-0 bi bi-thermometer-snow"> ${strTemp.at(0)}°F</h2>`)
+                $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-snow"> ${strTemp.at(0)}°F</h2>`)
             }
         })
         $.getJSON(strBaseURL).then(objData => {
@@ -55,6 +55,15 @@
             console.log(objData.current.cloud_cover)
             let strWeather = objData.current.cloud_cover
             $('#cloudData').append(`<h2 class="col-12">Cloud Coverage: ${strWeather}</h2>`)
+            if(strTemp > 75){
+                $('#cloudData').append(`<h2 class="col-12 bi bi-clouds-fill">${strWeather}</h2>`)
+            } else if(strTemp >= 50 && strTemp <= 75){
+                $('#cloudData').append(`<h2 class="col-12 bi bi-cloudy-fill">Cloud Coverage: ${strWeather}</h2>`)
+            }else if(strTemp >= 33 && strTemp < 50){
+                $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-sun-fill">Cloud Coverage: ${strWeather}</h2>`)
+            }else{
+                $('#cloudData').append(`<h2 class="col-12 bi bi-brightness-high-fill">Cloud Coverage: ${strWeather}</h2>`)
+            }
         })
     }
     </script>
