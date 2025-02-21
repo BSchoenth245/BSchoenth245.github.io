@@ -37,7 +37,7 @@
         // End Global Variables
 
         $.getJSON(strBaseGeoURL).then(objData => {
-            console.log(objData.city)
+            console.log(objData)
         })
         
         $.getJSON(strBaseMeteoURL).then(objData => {
@@ -60,7 +60,7 @@
         })
         $.getJSON(strBaseMeteoURL).then(objData => {
             console.log(objData.current.cloud_cover)
-            console.log(objData.current.is_day)
+            console.log(objData.minutely_15.is_day)
             let strWeather = objData.current.cloud_cover
             let blnIsDay = objData.minutely_15.is_day.at(0)
             if(strWeather > 75){
