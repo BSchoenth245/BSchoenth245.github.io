@@ -58,7 +58,7 @@
             let blnIsDay = objData.minutely_15.is_day.at(0)
             if(strWeather > 75){
                 $('#cloudData').append(`<h2 class="col-12 bi bi-clouds-fill pl-0"> Cloud Coverage: ${strWeather}</h2>`)
-            } else if(strWeather >= 50 && strWeather <= 75){
+            }else if(strWeather >= 50 && strWeather <= 75){
                 $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-fill pl-0"> Cloud Coverage: ${strWeather}</h2>`)
             }else if((strWeather >= 33 && strWeather < 50) && blnIsDay == 1){
                 $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-sun-fill pl-0"> Cloud Coverage: ${strWeather}</h2>`)
