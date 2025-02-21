@@ -1,0 +1,10 @@
+{
+    "name": "Weather App",
+    "icons": [
+        {
+            "src": "images/download.jpg",
+            "type": "image/jpg",
+            "sizes": "512x512"
+        }
+    ]
+}
