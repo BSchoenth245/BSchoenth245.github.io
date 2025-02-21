@@ -27,7 +27,7 @@
         })
         function fillData(strLat,strLong){
         // Start GLobal Variables
-        const strBaseURL = `https://api.open-meteo.com/v1/forecast?latitude=${strLat}&longitude=${strLong}&current=cloud_cover&minutely_15=temperature_2m,relative_humidity_2m&hourly=temperature_2m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timeformat=unixtime&timezone=America%2FChicago`
+        const strBaseURL = `https://api.open-meteo.com/v1/forecast?latitude=${strLat}&longitude=${strLong}&current=cloud_cover&minutely_15=temperature_2m,relative_humidity_2m,is_day&hourly=temperature_2m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timeformat=unixtime&timezone=auto`
         const tempInfo = document.getElementById('#tempData')
         const humidData = document.getElementById('#humidData')
         
@@ -36,6 +36,7 @@
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.minutely_15.temperature_2m)
             let strTemp = objData.minutely_15.temperature_2m
+            let blnIsDay = objData.current.is_day
             if(strTemp > 75){
             $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-sun"> ${strTemp.at(0)}°F</h2>`)
             } else if(strTemp >= 50 && strTemp <= 75){
@@ -58,8 +59,13 @@
                 $('#cloudData').append(`<h2 class="col-12 bi bi-clouds-fill"> Cloud Coverage: ${strWeather}</h2>`)
             } else if(strWeather >= 50 && strTemp <= 75){
                 $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-fill"> Cloud Coverage: ${strWeather}</h2>`)
-            }else if(strWeather >= 33 && strTemp < 50){
+            }else if((strWeather >= 33 && strTemp < 50) && blnIsDay == 1){
                 $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-sun-fill"> Cloud Coverage: ${strWeather}</h2>`)
+            }else if((strWeather >= 33 && strTemp < 50) && blnIsDay == 0){
+                $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-moon-fill"> Cloud Coverage: ${strWeather}</h2>`)
+            }
+            else if((strWeather <= 32) && blnIsDay == 0){
+                $('#cloudData').append(`<h2 class="col-12 bi bi-moon-fill"> Cloud Coverage: ${strWeather}</h2>`)
             }else{
                 $('#cloudData').append(`<h2 class="col-12 bi bi-brightness-high-fill"> Cloud Coverage: ${strWeather}</h2>`)
             }
