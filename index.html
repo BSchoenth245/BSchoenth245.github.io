@@ -18,11 +18,11 @@
                 <div class="text-black" id="location"></div>
             </div>
             <div class="card d-flex justify-content-center align-items-center col-12">
-                <!-- <div class="bg-primary col-6">
-                    <div class="text-black d-flex justify-content-center col-12"><div id="1"></div></div>
-                    <div class="text-black d-flex justify-content-center card-body col-12"><div id="2"></div></div>
-                    <div class="text-black d-flex justify-content-center card-body col-12"><div id="3"></div></div>
-                </div> -->
+                <div class="bg-primary col-6">
+                    <div class="text-black d-flex justify-content-center col-12"><div id="precipProb"></div></div>
+                    <div class="text-black d-flex justify-content-center card-body col-12"><div id="windSpeed"></div></div>
+                    <div class="text-black d-flex justify-content-center card-body col-12"><div id="UVIndex"></div></div>
+                </div>
                 <div class="bg-primary col-6">
                     <div class="text-black d-flex justify-content-center col-12"><div id="tempData"></div></div>
                     <div class="text-black d-flex justify-content-center card-body col-12"><div id="humidData"></div></div>
@@ -54,6 +54,15 @@
             $('#location').append(`<h1 class="col-12 ">${strCity}, ${strState}</h1>`)
         })
         
+        $.getJSON(strBaseMeteoURL).then(objData => {
+            let strprecipProd = objData.hourly.precipitation_probability
+            let strUVIndex = objData.daily.uv_index_max
+            let strwindSpeed = objData.hourly.wind_speed_10m
+            $('#precipProb').append(`<h2 class="col-12 pl-1 bi bi-thermometer-sun"> ${strprecipProd.at(0)}%</h2>`)
+            $('#windSpeed').append(`<h2 class="col-12 pl-1 bi bi-thermometer-sun"> ${strwindSpeed.at(0)}MPH</h2>`)
+            $('#UVIndex').append(`<h2 class="col-12 pl-1 bi bi-thermometer-sun"> ${strUVIndex.at(0)}</h2>`)
+        })
+
         $.getJSON(strBaseMeteoURL).then(objData => {
             console.log(objData.minutely_15.temperature_2m)
             let strTemp = objData.minutely_15.temperature_2m
