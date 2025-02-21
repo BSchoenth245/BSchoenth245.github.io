@@ -55,11 +55,11 @@
             console.log(objData.current.cloud_cover)
             let strWeather = objData.current.cloud_cover
             $('#cloudData').append(`<h2 class="col-12">Cloud Coverage: ${strWeather}</h2>`)
-            if(strTemp > 75){
+            if(strWeather > 75){
                 $('#cloudData').append(`<h2 class="col-12 bi bi-clouds-fill"> Cloud Coverage: ${strWeather}</h2>`)
-            } else if(strTemp >= 50 && strTemp <= 75){
+            } else if(strWeather >= 50 && strTemp <= 75){
                 $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-fill"> Cloud Coverage: ${strWeather}</h2>`)
-            }else if(strTemp >= 33 && strTemp < 50){
+            }else if(strWeather >= 33 && strTemp < 50){
                 $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-sun-fill"> Cloud Coverage: ${strWeather}</h2>`)
             }else{
                 $('#cloudData').append(`<h2 class="col-12 bi bi-brightness-high-fill"> Cloud Coverage: ${strWeather}</h2>`)
