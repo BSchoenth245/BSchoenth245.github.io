@@ -35,7 +35,7 @@
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.minutely_15.temperature_2m)
             let strTemp = objData.minutely_15.temperature_2m
-            $('#tempData').append(`<i class="bi bi-thermometer-sun"></i><p class="col-12">Temperature: ${strTemp.at(0)}</p>`)
+            $('#tempData').append(`<p class="col-12 bi bi-thermometer-sun">Temperature: ${strTemp.at(0)}</p>`)
         })
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.minutely_15.relative_humidity_2m)
