@@ -17,7 +17,12 @@
                 <h1 class="text-black bi bi-map-fill"></h1>
                 <div class="text-black" id="location"></div>
             </div>
-            <div class="bg-primary card-body col-12">
+            <div class="bg-primary card-body col-6">
+                <div class="text-black d-flex justify-content-center col-12"><div id="tempData"></div></div>
+                <div class="text-black d-flex justify-content-center card-body col-12"><div id="humidData"></div></div>
+                <div class="text-black d-flex justify-content-center card-body col-12"><div id="cloudData"></div></div>
+            </div>
+            <div class="bg-primary card-body col-6">
                 <div class="text-black d-flex justify-content-center col-12"><div id="tempData"></div></div>
                 <div class="text-black d-flex justify-content-center card-body col-12"><div id="humidData"></div></div>
                 <div class="text-black d-flex justify-content-center card-body col-12"><div id="cloudData"></div></div>
@@ -36,7 +41,7 @@
         })
         function fillData(strLat,strLong){
         // Start GLobal Variables
-        const strBaseMeteoURL = `https://api.open-meteo.com/v1/forecast?latitude=${strLat}&longitude=${strLong}&current=cloud_cover&minutely_15=temperature_2m,relative_humidity_2m,is_day&hourly=temperature_2m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timeformat=unixtime&timezone=auto`
+        const strBaseMeteoURL = `https://api.open-meteo.com/v1/forecast?latitude=${strLat}&longitude=${strLong}&hourly=temperature_2m,precipitation_probability,wind_speed_10m&daily=uv_index_max&timezone=America%2FChicago`
         const strBaseGeoURL = `https://geocode.maps.co/reverse?lat=${strLat}&lon=${strLong}&api_key=67b8ceed830b4604932568guoea9e15`
         const tempInfo = document.getElementById('#tempData')
         const humidData = document.getElementById('#humidData')
