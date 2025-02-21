@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 <body>
     <div class="d-flex justify-content-center align-items-right vh-100">
@@ -34,7 +35,7 @@
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.minutely_15.temperature_2m)
             let strTemp = objData.minutely_15.temperature_2m
-            $('#tempData').append(`<p class="col-12">Temperature: ${strTemp.at(0)}</p>`)
+            $('#tempData').append(`<i class="bi bi-thermometer-sun"></i><p class="col-12">Temperature: ${strTemp.at(0)}</p>`)
         })
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.minutely_15.relative_humidity_2m)
