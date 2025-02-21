@@ -14,13 +14,13 @@
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="card bg-dark d-flex justify-content-center align-items-center col-12 col-md-8 col-lg-6">
             <div class="d-flex justify-content-center align-items-center bg-primary card-body col-12">
-                <h2 class="text-white bi bi-map-fill"></h2>
-                <div class="text-white" id="location"></div>
+                <h1 class="text-black bi bi-map-fill"></h1>
+                <div class="text-black" id="location"></div>
             </div>
             <div class="bg-primary card-body col-12">
-                <div class="text-white d-flex justify-content-center col-12"><div id="tempData"></div></div>
-                <div class="text-white d-flex justify-content-center card-body col-12"><div id="humidData"></div></div>
-                <div class="text-white d-flex justify-content-center card-body col-12"><div id="cloudData"></div></div>
+                <div class="text-black d-flex justify-content-center col-12"><div id="tempData"></div></div>
+                <div class="text-black d-flex justify-content-center card-body col-12"><div id="humidData"></div></div>
+                <div class="text-black d-flex justify-content-center card-body col-12"><div id="cloudData"></div></div>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
         $.getJSON(strBaseGeoURL).then(objData => {
             console.log(objData.address.city)
             let strLocation = objData.address.city
-            $('#location').append(`<h2 class="col-12 ">${strLocation}</h2>`)
+            $('#location').append(`<h1 class="col-12 ">${strLocation}</h1>`)
         })
         
         $.getJSON(strBaseMeteoURL).then(objData => {
