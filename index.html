@@ -49,8 +49,9 @@
 
         $.getJSON(strBaseGeoURL).then(objData => {
             console.log(objData.address.city)
-            let strLocation = objData.address.city
-            $('#location').append(`<h1 class="col-12 ">${strLocation}</h1>`)
+            let strCity = objData.address.city
+            let strState = objData.address.state
+            $('#location').append(`<h1 class="col-12 ">${strCity}, ${strState}</h1>`)
         })
         
         $.getJSON(strBaseMeteoURL).then(objData => {
