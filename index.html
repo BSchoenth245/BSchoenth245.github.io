@@ -37,13 +37,13 @@
             console.log(objData.minutely_15.temperature_2m)
             let strTemp = objData.minutely_15.temperature_2m
             if(strTemp > 75){
-            $('#tempData').append(`<p class="col-12 bi bi-thermometer-sun">${strTemp.at(0)}</p>`)
+            $('#tempData').append(`<h2 class="col-12 bi bi-thermometer-sun">${strTemp.at(0)}</h2>`)
             } else if(strTemp >= 50){
-                $('#tempData').append(`<p class="col-12 bi bi-thermometer-half">${strTemp.at(0)}</p>`)
+                $('#tempData').append(`<h2 class="col-12 bi bi-thermometer-half">${strTemp.at(0)}</h2>`)
             }else if(strTemp >= 33){
-                $('#tempData').append(`<p class="col-12 bi bi-thermometer-low">${strTemp.at(0)}</p>`)
+                $('#tempData').append(`<h2 class="col-12 bi bi-thermometer-low">${strTemp.at(0)}</h2>`)
             }else{
-                $('#tempData').append(`<p class="col-12 bi bi-thermometer-snow">${strTemp.at(0)}</p>`)
+                $('#tempData').append(`<h2 class="col-12 bi bi-thermometer-snow">${strTemp.at(0)}</h2>`)
             }
         })
         $.getJSON(strBaseURL).then(objData => {
