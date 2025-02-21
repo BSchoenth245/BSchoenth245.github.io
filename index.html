@@ -11,10 +11,7 @@
 <body>
     <div class="d-flex justify-content-center align-items-center vh-100 rounded-4">
         <div class="bg-dark card-body justify-content-end col-12 col-md-8 col-lg-6">
-            <div class="d-inline-flex">
-                <i class="bi bi-thermometer-sun"></i>
-                <div id="tempData"></div>
-            </div>
+            <div id="tempData"></div>
             <div id="humidData"></div>
             <div id="cloudData"></div>
         </div>
@@ -39,7 +36,7 @@
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.minutely_15.temperature_2m)
             let strTemp = objData.minutely_15.temperature_2m
-            $('#tempData').append(`<p class="col-12 bi bi-thermometer-sun">Temperature: ${strTemp.at(0)}</p>`)
+            $('#tempData').append(`<p class="col-12 bi bi-thermometer-sun">${strTemp.at(0)}</p>`)
         })
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.minutely_15.relative_humidity_2m)
