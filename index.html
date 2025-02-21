@@ -54,7 +54,7 @@
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.current.cloud_cover)
             let strWeather = objData.current.cloud_cover
-            $('#cloudData').append(`<h2 class="col-12">Weather: ${strWeather}</h2>`)
+            $('#cloudData').append(`<h2 class="col-12">Cloud Coverage: ${strWeather}</h2>`)
         })
     }
     </script>
