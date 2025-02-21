@@ -36,7 +36,6 @@
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.minutely_15.temperature_2m)
             let strTemp = objData.minutely_15.temperature_2m
-            let blnIsDay = objData.current.is_day
             if(strTemp > 75){
             $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-sun"> ${strTemp.at(0)}°F</h2>`)
             } else if(strTemp >= 50 && strTemp <= 75){
@@ -55,6 +54,7 @@
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.current.cloud_cover)
             let strWeather = objData.current.cloud_cover
+            let blnIsDay = objData.current.is_day
             if(strWeather > 75){
                 $('#cloudData').append(`<h2 class="col-12 bi bi-clouds-fill"> Cloud Coverage: ${strWeather}</h2>`)
             } else if(strWeather >= 50 && strTemp <= 75){
@@ -63,8 +63,7 @@
                 $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-sun-fill"> Cloud Coverage: ${strWeather}</h2>`)
             }else if((strWeather >= 33 && strTemp < 50) && blnIsDay == 0){
                 $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-moon-fill"> Cloud Coverage: ${strWeather}</h2>`)
-            }
-            else if((strWeather <= 32) && blnIsDay == 0){
+            }else if((strWeather <= 32) && blnIsDay == 0){
                 $('#cloudData').append(`<h2 class="col-12 bi bi-moon-fill"> Cloud Coverage: ${strWeather}</h2>`)
             }else{
                 $('#cloudData').append(`<h2 class="col-12 bi bi-brightness-high-fill"> Cloud Coverage: ${strWeather}</h2>`)
