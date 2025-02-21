@@ -57,15 +57,15 @@
             let strWeather = objData.current.cloud_cover
             let blnIsDay = objData.minutely_15.is_day.at(0)
             if(strWeather > 75){
-                $('#cloudData').append(`<h2 class="col-12 bi bi-clouds-fill pl-0"> Cloud Coverage: ${strWeather}</h2>`)
+                $('#cloudData').append(`<h2 class="col-12 bi bi-clouds-fill pl-0"> ${strWeather}% Cloudy</h2>`)
             }else if(strWeather >= 50 && strWeather <= 75){
-                $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-fill pl-0"> Cloud Coverage: ${strWeather}</h2>`)
+                $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-fill pl-0"> ${strWeather}% Cloudy</h2>`)
             }else if((strWeather >= 33 && strWeather < 50) && blnIsDay == 1){
-                $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-sun-fill pl-0"> Cloud Coverage: ${strWeather}</h2>`)
+                $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-sun-fill pl-0"> ${strWeather}% Cloudy</h2>`)
             }else if((strWeather >= 33 && strWeather < 50) && blnIsDay == 0){
-                $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-moon-fill pl-0"> Cloud Coverage: ${strWeather}</h2>`)
+                $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-moon-fill pl-0"> ${strWeather}% Cloudy</h2>`)
             }else if((strWeather <= 32) && blnIsDay == 0){
-                $('#cloudData').append(`<h2 class="col-12 bi bi-moon-fill pl-0"> Cloud Coverage: ${strWeather}</h2>`)
+                $('#cloudData').append(`<h2 class="col-12 bi bi-moon-fill pl-0"> ${strWeather}% Cloudy</h2>`)
             }else{
                 $('#cloudData').append(`<h2 class="col-12 bi bi-brightness-high-fill pl-0"> ${strWeather}% Cloudy</h2>`)
             }
