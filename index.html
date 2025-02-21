@@ -49,7 +49,7 @@
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.minutely_15.relative_humidity_2m)
             let strHumid = objData.minutely_15.relative_humidity_2m
-            $('#humidData').append(`<h2 class="col-12 bi bi-moisture"> ${strHumid.at(0)}% Humidity</h2>`)
+            $('#humidData').append(`<h2 class="col-12 bi bi-moisture pl-1"> ${strHumid.at(0)}% Humidity</h2>`)
         })
         $.getJSON(strBaseURL).then(objData => {
             console.log(objData.current.cloud_cover)
