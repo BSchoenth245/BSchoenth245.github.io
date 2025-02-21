@@ -57,12 +57,22 @@
         })
         
         $.getJSON(strBaseMeteoURL).then(objData => {
-            let strprecipProd = objData.hourly.precipitation_probability
+            let strPrecipProb = objData.hourly.precipitation_probability
             let strUVIndex = objData.daily.uv_index_max
             let strwindSpeed = objData.hourly.wind_speed_10m
-            $('#precipProb').append(`<h2 class="col-12 pl-1 bi bi-thermometer-sun"> ${strprecipProd.at(0)}%</h2>`)
-            $('#windSpeed').append(`<h2 class="col-12 pl-1 bi bi-thermometer-sun"> ${strwindSpeed.at(0)}MPH</h2>`)
-            $('#UVIndex').append(`<h2 class="col-12 pl-1 bi bi-thermometer-sun"> ${strUVIndex.at(0)}</h2>`)
+            if(strPrecipProb >= 75){
+            $('#precipProb').append(`<h2 class="col-12 pl-1 bi bi-droplet-fill"> ${strPrecipProb.at(0)}%</h2>`)
+            }else if(strPrecipProb >= 45 && strPrecipProb < 75){
+                $('#precipProb').append(`<h2 class="col-12 pl-1 bi bi-droplet-half"> ${strPrecipProb.at(0)}%</h2>`)
+            }else{
+                $('#precipProb').append(`<h2 class="col-12 pl-1 bi bi-droplet"> ${strPrecipProb.at(0)}%</h2>`)
+            }
+            $('#windSpeed').append(`<h2 class="col-12 pl-1 bi bi-wind"> ${strwindSpeed.at(0)}MPH</h2>`)
+            if(strUVIndex > 5){
+            $('#UVIndex').append(`<h2 class="col-12 pl-1 bi brightness-alt-high-fill"> ${strUVIndex.at(0)}</h2>`)
+            }else{
+            $('#UVIndex').append(`<h2 class="col-12 pl-1 bi brightness-alt-low-fill"> ${strUVIndex.at(0)}</h2>`)
+            }
         })
 
         $.getJSON(strBaseMeteoURL).then(objData => {
