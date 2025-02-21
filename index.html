@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-primary card-body col-6 pl-0 pr-0 border border-0">
+            <div class="bg-primary card-body col-12 pl-0 pr-0 border border-0 mt-2">
                 <div id="sunrise"></div>
                 <div id="sunset"></div>
             </div>
@@ -60,6 +60,15 @@
             $('#location').append(`<h1 class="col-12 ">${strCity}, ${strState}</h1>`)
         })
         
+        $.getJSON(strBaseMeteoURL).then(objData => {
+            let strSunrise = objData.daily.sunrise
+            let strSunset = objData.daily.sunset
+            $('#sunrise').append(`<h2 class="col-12 pl-1 bi bi-droplet-fill"> ${sunrise.at(0)}</h2>`)
+            $('#sunset').append(`<h2 class="col-12 pl-1 bi bi-droplet-fill"> ${sunset.at(0)}</h2>`)
+
+
+        })
+
         $.getJSON(strBaseMeteoURL).then(objData => {
             let strPrecipProb = objData.hourly.precipitation_probability
             let strUVIndex = objData.daily.uv_index_max
