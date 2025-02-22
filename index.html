@@ -62,6 +62,7 @@
         // This arrangement can be altered based on how we want the date's format to appear.
         let currentDate = `${month}-${day}-${year}`;
         console.log(currentDate)
+        $('#date').append(`<h1 class="col-12">${currentDate}</h1>`)
 
 
         if (navigator.geolocation) {
