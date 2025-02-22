@@ -53,16 +53,11 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
     <script>
 
-        const date = new Date();
-
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
+        let date = new Date();
 
         // This arrangement can be altered based on how we want the date's format to appear.
-        let currentDate = `${month}-${day}-${year}`;
-        console.log(currentDate)
-        $('#date').append(`<h1 class="col-12">${currentDate}</h1>`)
+        console.log(date)
+        $('#date').append(`<h1 class="col-12">${date.slice(0,16)}</h1>`)
 
 
         if (navigator.geolocation) {
