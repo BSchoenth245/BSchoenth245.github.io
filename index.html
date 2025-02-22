@@ -96,8 +96,6 @@
             let strSunset = objData.daily.sunset
             $('#sunriseTime').append(`<h2 class="col-12 pl-1 bi bi-sunrise-fill"> ${strSunrise.at(0).slice(11,16)}</h2>`)
             $('#sunsetTime').append(`<h2 class="col-12 pl-1 bi bi-sunset-fill"> ${strSunset.at(0).slice(11,16)}</h2>`)
-
-
         })
 
         $.getJSON(strBaseMeteoURL).then(objData => {
@@ -113,9 +111,9 @@
             }
             $('#windSpeed').append(`<h2 class="col-12 pl-1 bi bi-wind"> ${strwindSpeed.at(0)}MPH</h2>`)
             if(strUVIndex <= 5.0){
-            $('#UVIndex').append(`<h2 class="col-12 pl-1 bi bi-brightness-alt-low-fill"> Max UV  ${strUVIndex.at(0)}</h2>`)
+            $('#UVIndex').append(`<h2 class="col-12 pl-1 bi bi-brightness-alt-low-fill"> Max UV ${strUVIndex.at(0)}</h2>`)
             }else{
-            $('#UVIndex').append(`<h2 class="col-12 pl-1 bi bi-brightness-alt-high-fill"> Max UV ${strUVIndex.at(0)} UV</h2>`)
+            $('#UVIndex').append(`<h2 class="col-12 pl-1 bi bi-brightness-alt-high-fill"> Max UV ${strUVIndex.at(0)}</h2>`)
             }
         })
 
