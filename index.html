@@ -14,6 +14,9 @@
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="card bg-dark d-flex justify-content-center align-items-center col-12 col-md-8 col-lg-6">
             <div class="d-flex justify-content-center align-items-center bg-primary card-body col-12 mb-2">
+                <div id="date"></div>
+            </div>
+            <div class="d-flex justify-content-center align-items-center bg-primary card-body col-12 mb-2">
                 <h1 class="text-black bi bi-map-fill"></h1>
                 <div class="text-black" id="location"></div>
             </div>
@@ -49,6 +52,18 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
     <script>
+
+        const date = new Date();
+
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+
+        // This arrangement can be altered based on how we want the date's format to appear.
+        let currentDate = `${month}-${day}-${year}`;
+        console.log(currentDate)
+
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
@@ -61,7 +76,7 @@
                     // Location permissions were not allowed.
                     Swal.fire({
                         title: "Oh no, you have an error!",
-                        html: "Location features must be enabled to retrieve weather informartion",
+                        html: "Please enable location features.",
                         icon: "error"
                     });
                     console.error("Error getting location:", error.message);
@@ -72,13 +87,13 @@
             console.error("Geolocation is not supported by this browser.");
             Swal.fire({
                 title: "Oh no, you have an error!",
-                html: "This devices must have location features to provide acurate weather data.",
+                html: "This devices must have location features enabled.",
                 icon: "error"
             });
         }
         function fillData(strLat,strLong){
         // Start GLobal Variables
-        const strBaseMeteoURL = `https://api.open-meteo.com/v1/forecast?latitude=${strLat}&longitude=${strLong}&current=cloud_cover&minutely_15=temperature_2m,relative_humidity_2m,is_day&hourly=temperature_2m,precipitation_probability,wind_speed_10m&daily=sunrise,sunset,uv_index_max&timezone=America%2FChicago&temperature_unit=fahrenheit`
+        const strBaseMeteoURL = `https://api.open-meteo.com/v1/forecast?latitude=${strLat}&longitude=${strLong}&current=cloud_cover&minutely_15=temperature_2m,relative_humidity_2m,wind_speed_10m,is_day&hourly=precipitation_probability&daily=sunrise,sunset,uv_index_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=auto`
         const strBaseGeoURL = `https://geocode.maps.co/reverse?lat=${strLat}&lon=${strLong}&api_key=67b8ceed830b4604932568guoea9e15`
         // End Global Variables
 
@@ -101,7 +116,7 @@
         $.getJSON(strBaseMeteoURL).then(objData => {
             let strPrecipProb = objData.hourly.precipitation_probability
             let strUVIndex = objData.daily.uv_index_max
-            let strwindSpeed = objData.hourly.wind_speed_10m
+            let strwindSpeed = objData.minutely_15.wind_speed_10m
             if(strPrecipProb >= 75){
             $('#precipProb').append(`<h2 class="col-12 pl-1 bi bi-droplet-fill"> ${strPrecipProb.at(0)}%</h2>`)
             }else if(strPrecipProb >= 45 && strPrecipProb < 75){
