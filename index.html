@@ -149,7 +149,7 @@
             console.log(objData.minutely_15.is_day)
             console.log('is_day',objData.current.is_day)
             let strWeather = objData.current.cloud_cover
-            let blnIsDay = objData.current.is_day.at(0)
+            let blnIsDay = objData.current.is_day
             if(strWeather > 75){
                 $('#cloudData').append(`<h2 class="col-12 bi bi-clouds-fill pl-0"> ${strWeather}% Cloudy</h2>`)
             }else if(strWeather >= 50 && strWeather <= 75){
