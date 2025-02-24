@@ -129,13 +129,13 @@
             console.log(objData.current.temperature_2m)
             let strTemp = objData.current.temperature_2m
             if(strTemp > 75){
-            $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-sun"> ${strTemp.at(0)}°F</h2>`)
+            $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-sun"> ${strTemp}°F</h2>`)
             } else if(strTemp >= 50 && strTemp <= 75){
-                $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-half"> ${strTemp.at(0)}°F</h2>`)
+                $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-half"> ${strTemp}°F</h2>`)
             }else if(strTemp >= 33 && strTemp < 50){
-                $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-low"> ${strTemp.at(0)}°F</h2>`)
+                $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-low"> ${strTemp}°F</h2>`)
             }else{
-                $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-snow"> ${strTemp.at(0)}°F</h2>`)
+                $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-snow"> ${strTemp}°F</h2>`)
             }
         })
         $.getJSON(strBaseMeteoURL).then(objData => {
