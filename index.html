@@ -87,7 +87,7 @@
         }
         function fillData(strLat,strLong){
         // Start GLobal Variables
-        const strBaseMeteoURL = `https://api.open-meteo.com/v1/forecast?latitude=${strLat}&longitude=${strLong}&current=cloud_cover&minutely_15=temperature_2m,relative_humidity_2m,wind_speed_10m,is_day&hourly=precipitation_probability&daily=sunrise,sunset,uv_index_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=auto`
+        const strBaseMeteoURL = `https://api.open-meteo.com/v1/forecast?latitude=${strLat}&longitude=${strLong}&current=cloud_cover,is_day&minutely_15=temperature_2m,relative_humidity_2m,wind_speed_10m&hourly=precipitation_probability&daily=sunrise,sunset,uv_index_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=auto`
         const strBaseGeoURL = `https://geocode.maps.co/reverse?lat=${strLat}&lon=${strLong}&api_key=67b8ceed830b4604932568guoea9e15`
         // End Global Variables
 
@@ -147,9 +147,9 @@
         $.getJSON(strBaseMeteoURL).then(objData => {
             console.log(objData.current.cloud_cover)
             console.log(objData.minutely_15.is_day)
-            console.log(objData.minutely_15.is_day)
+            console.log('is_day',objData.current.is_day)
             let strWeather = objData.current.cloud_cover
-            let blnIsDay = objData.minutely_15.is_day.at(0)
+            let blnIsDay = objData.current.is_day.at(0)
             if(strWeather > 75){
                 $('#cloudData').append(`<h2 class="col-12 bi bi-clouds-fill pl-0"> ${strWeather}% Cloudy</h2>`)
             }else if(strWeather >= 50 && strWeather <= 75){
