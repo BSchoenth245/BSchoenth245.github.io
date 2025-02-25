@@ -63,7 +63,7 @@
                     let URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=is_day&timezone=auto`
 
                     $.getJSON(URL).then(objData => {
-                        let blnIsDay = 1//objData.current.is_day
+                        let blnIsDay = 0//objData.current.is_day
                         // console.log('IsDay1', blnIsDay)
                         if(blnIsDay == 1){
                             document.body.classList.add('bg-info');
@@ -75,6 +75,11 @@
                         }
                         else{
                             document.body.classList.add('bg-dark')
+                            document.getElementById("card1").classList.add('bg-dark')
+                            document.getElementById("card2").classList.add('bg-primary-emphasis')
+                            document.getElementById("card3").classList.add('bg-primary-emphasis')
+                            document.getElementById("card4").classList.add('bg-primary-emphasis')
+                            document.getElementById("card5").classList.add('bg-primary-emphasis')
                         }
                     })
 
