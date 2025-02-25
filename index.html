@@ -109,7 +109,7 @@
         let date = new Date();
         date = date.toString()
         console.log(date)
-        $('#date').append(`<h2 class="col-12">${date.slice(0,16)}</h2>`)
+        $('#date').append(`<h3 class="col-12">${date.slice(0,16)}</h3>`)
 
         
         function fillData(strLat,strLong){
@@ -122,7 +122,7 @@
             console.log(objData.address.city)
             let strCity = objData.address.city
             let strState = objData.address.state
-            $('#location').append(`<h2 class="col-12 ">${strCity}, ${strState}</h2>`)
+            $('#location').append(`<h3 class="col-12 ">${strCity}, ${strState}</h3>`)
         })
         
         $.getJSON(strBaseMeteoURL).then(objData => {
