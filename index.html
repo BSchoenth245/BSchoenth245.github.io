@@ -23,14 +23,14 @@
                 <div class="row card d-flex justify-content-center align-items-center pl-0 pr-0 col-12">
                     <div id="card4" class="d-flex justify-content-center align-items-center col-12 pl-0 pr-0">
                         <div class="card-body col-6 pl-0 pr-0 border border-0">
-                            <div class="text-primary d-flex justify-content-center col-12"><div id="precipProb"></div></div>
-                            <div class="text-primary d-flex justify-content-center card-body col-12"><div id="windSpeed"></div></div>
-                            <div class="text-primary d-flex justify-content-center card-body col-12"><div id="UVIndex"></div></div>
+                            <div class="text-primary d-flex justify-content-center col-12"><div aria-label="Precipitation Probability" id="precipProb"></div></div>
+                            <div class="text-primary d-flex justify-content-center card-body col-12"><div aria-label="Wind Speed" id="windSpeed"></div></div>
+                            <div class="text-primary d-flex justify-content-center card-body col-12"><div aria-label=" Maximum UV Index" id="UVIndex"></div></div>
                         </div>
                         <div class="card-body col-6 pl-0 pr-0 border border-0">
-                            <div class="text-primary d-flex justify-content-center col-12"><div id="tempData"></div></div>
-                            <div class="text-primary d-flex justify-content-center card-body col-12"><div id="humidData"></div></div>
-                            <div class="text-primary d-flex justify-content-center card-body col-12"><div id="cloudData"></div></div>
+                            <div class="text-primary d-flex justify-content-center col-12"><div aria-label="temperature" id="tempData"></div></div>
+                            <div class="text-primary d-flex justify-content-center card-body col-12"><div aria-label="humidity" id="humidData"></div></div>
+                            <div class="text-primary d-flex justify-content-center card-body col-12"><div aria-label="Cloud Coverage" id="cloudData"></div></div>
                         </div>
                     </div>
                 </div>
@@ -141,9 +141,9 @@
             }
             $('#windSpeed').append(`<h3 class="col-12 pl-1 bi bi-wind"> ${strwindSpeed.at(0)}MPH</h3>`)
             if(strUVIndex <= 5.0){
-            $('#UVIndex').append(`<h3 class="col-12 pl-1 bi bi-brightness-alt-low-fill"> Max UV ${strUVIndex.at(0)}</h3>`)
+            $('#UVIndex').append(`<h3 class="col-12 pl-1 bi bi-brightness-alt-low-fill"> UV:${strUVIndex.at(0)}</h3>`)
             }else{
-            $('#UVIndex').append(`<h3 class="col-12 pl-1 bi bi-brightness-alt-high-fill"> Max UV ${strUVIndex.at(0)}</h3>`)
+            $('#UVIndex').append(`<h3 class="col-12 pl-1 bi bi-brightness-alt-high-fill"> UV: ${strUVIndex.at(0)}</h3>`)
             }
         })
         $.getJSON(strBaseMeteoURL).then(objData => {
@@ -162,7 +162,7 @@
         $.getJSON(strBaseMeteoURL).then(objData => {
             console.log(objData.minutely_15.relative_humidity_2m)
             let strHumid = objData.minutely_15.relative_humidity_2m
-            $('#humidData').append(`<h3 class="col-12 bi bi-moisture pl-0"> ${strHumid.at(0)}% Humidity</h3>`)
+            $('#humidData').append(`<h3 class="col-12 bi bi-moisture pl-0"> ${strHumid.at(0)}% Humid</h3>`)
         })
         $.getJSON(strBaseMeteoURL).then(objData => {
             console.log(objData.current.cloud_cover)
@@ -171,17 +171,17 @@
             let strWeather = objData.current.cloud_cover
             let blnIsDay = objData.current.is_day
             if(strWeather > 75){
-                $('#cloudData').append(`<h3 class="col-12 bi bi-clouds-fill pl-0"> ${strWeather}% Cloudy</h3>`)
+                $('#cloudData').append(`<h3 class="col-12 bi bi-clouds-fill pl-0"> ${strWeather}%</h3>`)
             }else if(strWeather >= 50 && strWeather <= 75){
-                $('#cloudData').append(`<h3 class="col-12 bi bi-cloud-fill pl-0"> ${strWeather}% Cloudy</h3>`)
+                $('#cloudData').append(`<h3 class="col-12 bi bi-cloud-fill pl-0"> ${strWeather}%</h3>`)
             }else if((strWeather >= 33 && strWeather < 50) && blnIsDay == 1){
-                $('#cloudData').append(`<h3 class="col-12 bi bi-cloud-sun-fill pl-0"> ${strWeather}% Cloudy</h3>`)
+                $('#cloudData').append(`<h3 class="col-12 bi bi-cloud-sun-fill pl-0"> ${strWeather}%</h3>`)
             }else if((strWeather >= 33 && strWeather < 50) && blnIsDay == 0){
-                $('#cloudData').append(`<h3 class="col-12 bi bi-cloud-moon-fill pl-0"> ${strWeather}% Cloudy</h3>`)
+                $('#cloudData').append(`<h3 class="col-12 bi bi-cloud-moon-fill pl-0"> ${strWeather}%</h3>`)
             }else if((strWeather <= 32) && blnIsDay == 0){
-                $('#cloudData').append(`<h3 class="col-12 bi bi-moon-fill pl-0"> ${strWeather}% Cloudy</h3>`)
+                $('#cloudData').append(`<h3 class="col-12 bi bi-moon-fill pl-0"> ${strWeather}%</h3>`)
             }else{
-                $('#cloudData').append(`<h3 class="col-12 bi bi-brightness-high-fill pl-0"> ${strWeather}% Cloudy</h3>`)
+                $('#cloudData').append(`<h3 class="col-12 bi bi-brightness-high-fill pl-0"> ${strWeather}%</h3>`)
             }
         })
     }
