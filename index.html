@@ -67,8 +67,11 @@
                         // console.log('IsDay1', blnIsDay)
                         if(blnIsDay == 1){
                             document.body.classList.add('bg-info');
-                            $('#card1').append(`class="bg-dark"`)
-
+                            document.getElementById("card1").classList.add('bg-info')
+                            document.getElementById("card2").classList.add('bg-secondary')
+                            document.getElementById("card3").classList.add('bg-secondary')
+                            document.getElementById("card4").classList.add('bg-secondary')
+                            document.getElementById("card5").classList.add('bg-secondary')
                         }
                         else{
                             document.body.classList.add('bg-dark')
