@@ -62,8 +62,8 @@
                     let URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=is_day&timezone=auto`
 
                     $.getJSON(URL).then(objData => {
-                        let blnIsDay = 1//objData.current.is_day
-                        // console.log('IsDay1', blnIsDay)
+                        let blnIsDay = objData.current.is_day
+                        console.log('IsDay1', blnIsDay)
                         if(blnIsDay == 1){
                             document.body.classList.add('bg-info');
                             document.getElementById("card1").classList.add('bg-info')
