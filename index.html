@@ -169,10 +169,10 @@
         $.getJSON(strBaseMeteoURL).then(objData => {
             let blnIsDay = objData.current.is_day
             if(blnIsDay == 1){
-                document.body.classList.add('bg-primary');
+                document.body.classList.add('class = "bg-primary"');
             }
             else{
-                document.body.classList.add('bg-dark')
+                document.body.classList.add('class = "bg-dark"')
             }
         })
     }
