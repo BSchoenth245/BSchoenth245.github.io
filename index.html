@@ -166,13 +166,15 @@
     }
 
     function bgColorFunc(){
-        let blnIsDay = objData.current.is_day
-        if(blnIsDay == 1){
-            document.body.classList.add('bg-primary');
-        }
-        else{
-            document.body.classList.add('bg-dark')
-        }
+        $.getJSON(strBaseMeteoURL).then(objData => {
+            let blnIsDay = objData.current.is_day
+            if(blnIsDay == 1){
+                document.body.classList.add('bg-primary');
+            }
+            else{
+                document.body.classList.add('bg-dark')
+            }
+        })
     }
     </script>
 </body>
