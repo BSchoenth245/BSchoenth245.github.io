@@ -52,21 +52,30 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
     <script>
 
-        let date = new Date();
-        date = date.toString()
-        console.log(date)
-        $('#date').append(`<h1 class="col-12">${date.slice(0,16)}</h1>`)
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
+        function bgColorFunc(){            
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
                 (position) => {
                     // Get location data from lat/long
                     let latitude = position.coords.latitude;
                     let longitude = position.coords.longitude;
+
+                    let URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=is_day&timezone=auto`
+
+                    $.getJSON(URL).then(objData => {
+                        let blnIsDay = objData.current.is_day
+                        if(blnIsDay == 1){
+                            document.body.classList.add('class = "bg-primary"');
+                        }
+                        else{
+                            document.body.classList.add('class = "bg-dark"')
+                        }
+                    })
+
                     fillData(latitude,longitude)
                 },
                 (error) => {
-                    // Location permissions were not allowed.
+                // Location permissions were not allowed.
                     Swal.fire({
                         title: "Oh no, you have an error!",
                         html: "Please enable location features.",
@@ -74,33 +83,29 @@
                     });
                     console.error("Error getting location:", error.message);
                 }
-            );
-        } else {
-            // The app can not get weather data without gps information
-            console.error("Geolocation is not supported by this browser.");
-            Swal.fire({
-                title: "Oh no, you have an error!",
-                html: "This devices must have location features enabled.",
-                icon: "error"
-            });
+                );
+                } else {
+                // The app can not get weather data without gps information
+                console.error("Geolocation is not supported by this browser.");
+                Swal.fire({
+                    title: "Oh no, you have an error!",
+                    html: "This devices must have location features enabled.",
+                    icon: "error"
+                });
+            }
         }
+
+        let date = new Date();
+        date = date.toString()
+        console.log(date)
+        $('#date').append(`<h1 class="col-12">${date.slice(0,16)}</h1>`)
+
+        
         function fillData(strLat,strLong){
         // Start GLobal Variables
         const strBaseMeteoURL = `https://api.open-meteo.com/v1/forecast?latitude=${strLat}&longitude=${strLong}&current=cloud_cover,temperature_2m,is_day&minutely_15=relative_humidity_2m,wind_speed_10m&hourly=precipitation_probability&daily=sunrise,sunset,uv_index_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=auto`
         const strBaseGeoURL = `https://geocode.maps.co/reverse?lat=${strLat}&lon=${strLong}&api_key=67b8ceed830b4604932568guoea9e15`
         // End Global Variables
-
-        function bgColorFunc(){
-            $.getJSON(strBaseMeteoURL).then(objData => {
-                let blnIsDay = objData.current.is_day
-                if(blnIsDay == 1){
-                    document.body.classList.add('class = "bg-primary"');
-                }
-                else{
-                    document.body.classList.add('class = "bg-dark"')
-                }
-            })
-        }
 
         $.getJSON(strBaseGeoURL).then(objData => {
             console.log(objData.address.city)
