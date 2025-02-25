@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lumen/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/faltly/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="manifest" href="manifest.json"/>
   <!-- Using icons from flaticon.com -->
@@ -63,23 +63,23 @@
                     let URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=is_day&timezone=auto`
 
                     $.getJSON(URL).then(objData => {
-                        let blnIsDay = 0//objData.current.is_day
+                        let blnIsDay = 1//objData.current.is_day
                         // console.log('IsDay1', blnIsDay)
                         if(blnIsDay == 1){
                             document.body.classList.add('bg-info');
                             document.getElementById("card1").classList.add('bg-info')
+                            document.getElementById("card2").classList.add('bg-light')
+                            document.getElementById("card3").classList.add('bg-light')
+                            document.getElementById("card4").classList.add('bg-light')
+                            document.getElementById("card5").classList.add('bg-light')
+                        }
+                        else{
+                            document.body.classList.add('bg-primary')
+                            document.getElementById("card1").classList.add('bg-primary')
                             document.getElementById("card2").classList.add('bg-secondary')
                             document.getElementById("card3").classList.add('bg-secondary')
                             document.getElementById("card4").classList.add('bg-secondary')
                             document.getElementById("card5").classList.add('bg-secondary')
-                        }
-                        else{
-                            document.body.classList.add('bg-#000000')
-                            document.getElementById("card1").classList.add('bg-black')
-                            document.getElementById("card2").classList.add('bg-dark')
-                            document.getElementById("card3").classList.add('bg-dark')
-                            document.getElementById("card4").classList.add('bg-dark')
-                            document.getElementById("card5").classList.add('bg-dark')
                         }
                     })
 
