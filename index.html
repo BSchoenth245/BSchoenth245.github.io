@@ -90,6 +90,18 @@
         const strBaseGeoURL = `https://geocode.maps.co/reverse?lat=${strLat}&lon=${strLong}&api_key=67b8ceed830b4604932568guoea9e15`
         // End Global Variables
 
+        function bgColorFunc(){
+            $.getJSON(strBaseMeteoURL).then(objData => {
+                let blnIsDay = objData.current.is_day
+                if(blnIsDay == 1){
+                    document.body.classList.add('class = "bg-primary"');
+                }
+                else{
+                    document.body.classList.add('class = "bg-dark"')
+                }
+            })
+        }
+
         $.getJSON(strBaseGeoURL).then(objData => {
             console.log(objData.address.city)
             let strCity = objData.address.city
@@ -165,17 +177,7 @@
         })
     }
 
-    function bgColorFunc(){
-        $.getJSON(strBaseMeteoURL).then(objData => {
-            let blnIsDay = objData.current.is_day
-            if(blnIsDay == 1){
-                document.body.classList.add('class = "bg-primary"');
-            }
-            else{
-                document.body.classList.add('class = "bg-dark"')
-            }
-        })
-    }
+    
     </script>
 </body>
 </html>
