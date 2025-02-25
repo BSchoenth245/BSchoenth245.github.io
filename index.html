@@ -109,7 +109,7 @@
         let date = new Date();
         date = date.toString()
         console.log(date)
-        $('#date').append(`<h1 class="col-12">${date.slice(0,16)}</h1>`)
+        $('#date').append(`<h2 class="col-12">${date.slice(0,16)}</h2>`)
 
         
         function fillData(strLat,strLong){
@@ -122,7 +122,7 @@
             console.log(objData.address.city)
             let strCity = objData.address.city
             let strState = objData.address.state
-            $('#location').append(`<h1 class="col-12 ">${strCity}, ${strState}</h1>`)
+            $('#location').append(`<h2 class="col-12 ">${strCity}, ${strState}</h2>`)
         })
         
         $.getJSON(strBaseMeteoURL).then(objData => {
@@ -130,8 +130,8 @@
             console.log(objData.daily.sunset)
             let strSunrise = objData.daily.sunrise
             let strSunset = objData.daily.sunset
-            $('#sunriseTime').append(`<h2 class="col-12 pl-1 bi bi-sunrise-fill"> ${strSunrise.at(0).slice(11,16)}</h2>`)
-            $('#sunsetTime').append(`<h2 class="col-12 pl-1 bi bi-sunset-fill"> ${strSunset.at(0).slice(11,16)}</h2>`)
+            $('#sunriseTime').append(`<h3 class="col-12 pl-1 bi bi-sunrise-fill"> ${strSunrise.at(0).slice(11,16)}</h3>`)
+            $('#sunsetTime').append(`<h3 class="col-12 pl-1 bi bi-sunset-fill"> ${strSunset.at(0).slice(11,16)}</h3>`)
         })
 
         $.getJSON(strBaseMeteoURL).then(objData => {
@@ -139,17 +139,17 @@
             let strUVIndex = objData.daily.uv_index_max
             let strwindSpeed = objData.minutely_15.wind_speed_10m
             if(strPrecipProb >= 75){
-            $('#precipProb').append(`<h2 class="col-12 pl-1 bi bi-droplet-fill"> ${strPrecipProb.at(0)}%</h2>`)
+            $('#precipProb').append(`<h3 class="col-12 pl-1 bi bi-droplet-fill"> ${strPrecipProb.at(0)}%</h3>`)
             }else if(strPrecipProb >= 45 && strPrecipProb < 75){
-                $('#precipProb').append(`<h2 class="col-12 pl-1 bi bi-droplet-half"> ${strPrecipProb.at(0)}%</h2>`)
+                $('#precipProb').append(`<h3 class="col-12 pl-1 bi bi-droplet-half"> ${strPrecipProb.at(0)}%</h3>`)
             }else{
-                $('#precipProb').append(`<h2 class="col-12 pl-1 bi bi-droplet"> ${strPrecipProb.at(0)}%</h2>`)
+                $('#precipProb').append(`<h3 class="col-12 pl-1 bi bi-droplet"> ${strPrecipProb.at(0)}%</h3>`)
             }
-            $('#windSpeed').append(`<h2 class="col-12 pl-1 bi bi-wind"> ${strwindSpeed.at(0)}MPH</h2>`)
+            $('#windSpeed').append(`<h3 class="col-12 pl-1 bi bi-wind"> ${strwindSpeed.at(0)}MPH</h3>`)
             if(strUVIndex <= 5.0){
-            $('#UVIndex').append(`<h2 class="col-12 pl-1 bi bi-brightness-alt-low-fill"> Max UV ${strUVIndex.at(0)}</h2>`)
+            $('#UVIndex').append(`<h3 class="col-12 pl-1 bi bi-brightness-alt-low-fill"> Max UV ${strUVIndex.at(0)}</h3>`)
             }else{
-            $('#UVIndex').append(`<h2 class="col-12 pl-1 bi bi-brightness-alt-high-fill"> Max UV ${strUVIndex.at(0)}</h2>`)
+            $('#UVIndex').append(`<h3 class="col-12 pl-1 bi bi-brightness-alt-high-fill"> Max UV ${strUVIndex.at(0)}</h3>`)
             }
         })
 
@@ -157,19 +157,19 @@
             console.log(objData.current.temperature_2m)
             let strTemp = objData.current.temperature_2m
             if(strTemp > 75){
-            $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-sun"> ${strTemp}°F</h2>`)
+            $('#tempData').append(`<h3 class="col-12 pl-1 bi bi-thermometer-sun"> ${strTemp}°F</h3>`)
             } else if(strTemp >= 50 && strTemp <= 75){
-                $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-half"> ${strTemp}°F</h2>`)
+                $('#tempData').append(`<h3 class="col-12 pl-1 bi bi-thermometer-half"> ${strTemp}°F</h3>`)
             }else if(strTemp >= 33 && strTemp < 50){
-                $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-low"> ${strTemp}°F</h2>`)
+                $('#tempData').append(`<h3 class="col-12 pl-1 bi bi-thermometer-low"> ${strTemp}°F</h3>`)
             }else{
-                $('#tempData').append(`<h2 class="col-12 pl-1 bi bi-thermometer-snow"> ${strTemp}°F</h2>`)
+                $('#tempData').append(`<h3 class="col-12 pl-1 bi bi-thermometer-snow"> ${strTemp}°F</h3>`)
             }
         })
         $.getJSON(strBaseMeteoURL).then(objData => {
             console.log(objData.minutely_15.relative_humidity_2m)
             let strHumid = objData.minutely_15.relative_humidity_2m
-            $('#humidData').append(`<h2 class="col-12 bi bi-moisture pl-0"> ${strHumid.at(0)}% Humidity</h2>`)
+            $('#humidData').append(`<h3 class="col-12 bi bi-moisture pl-0"> ${strHumid.at(0)}% Humidity</h3>`)
         })
         $.getJSON(strBaseMeteoURL).then(objData => {
             console.log(objData.current.cloud_cover)
@@ -178,17 +178,17 @@
             let strWeather = objData.current.cloud_cover
             let blnIsDay = objData.current.is_day
             if(strWeather > 75){
-                $('#cloudData').append(`<h2 class="col-12 bi bi-clouds-fill pl-0"> ${strWeather}% Cloudy</h2>`)
+                $('#cloudData').append(`<h3 class="col-12 bi bi-clouds-fill pl-0"> ${strWeather}% Cloudy</h3>`)
             }else if(strWeather >= 50 && strWeather <= 75){
-                $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-fill pl-0"> ${strWeather}% Cloudy</h2>`)
+                $('#cloudData').append(`<h3 class="col-12 bi bi-cloud-fill pl-0"> ${strWeather}% Cloudy</h3>`)
             }else if((strWeather >= 33 && strWeather < 50) && blnIsDay == 1){
-                $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-sun-fill pl-0"> ${strWeather}% Cloudy</h2>`)
+                $('#cloudData').append(`<h3 class="col-12 bi bi-cloud-sun-fill pl-0"> ${strWeather}% Cloudy</h3>`)
             }else if((strWeather >= 33 && strWeather < 50) && blnIsDay == 0){
-                $('#cloudData').append(`<h2 class="col-12 bi bi-cloud-moon-fill pl-0"> ${strWeather}% Cloudy</h2>`)
+                $('#cloudData').append(`<h3 class="col-12 bi bi-cloud-moon-fill pl-0"> ${strWeather}% Cloudy</h3>`)
             }else if((strWeather <= 32) && blnIsDay == 0){
-                $('#cloudData').append(`<h2 class="col-12 bi bi-moon-fill pl-0"> ${strWeather}% Cloudy</h2>`)
+                $('#cloudData').append(`<h3 class="col-12 bi bi-moon-fill pl-0"> ${strWeather}% Cloudy</h3>`)
             }else{
-                $('#cloudData').append(`<h2 class="col-12 bi bi-brightness-high-fill pl-0"> ${strWeather}% Cloudy</h2>`)
+                $('#cloudData').append(`<h3 class="col-12 bi bi-brightness-high-fill pl-0"> ${strWeather}% Cloudy</h3>`)
             }
         })
     }
