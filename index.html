@@ -64,6 +64,7 @@
 
                     $.getJSON(URL).then(objData => {
                         let blnIsDay = objData.current.is_day
+                        console.log('IsDay1', blnIsDay)
                         if(blnIsDay == 1){
                             document.body.classList.add('class = "bg-primary"');
                         }
