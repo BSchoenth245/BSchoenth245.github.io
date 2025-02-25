@@ -12,16 +12,16 @@
 </head>
 <body onload="bgColorFunc()" class="">
         <div class="d-flex justify-content-center align-items-center vh-100">
-            <div class="card bg-info d-flex justify-content-center align-items-center col-12 col-md-8 col-lg-6 border border-0">
-                <div class="d-flex justify-content-center align-items-center bg-secondary card-body col-12 mb-2 pb-0 pt-0 pl-3 pr-3">
+            <div id="card1" class="card d-flex justify-content-center align-items-center col-12 col-md-8 col-lg-6 border border-0">
+                <div id="card2" class="d-flex justify-content-center align-items-center card-body col-12 mb-2 pb-0 pt-0 pl-3 pr-3">
                     <div id="date" class="text-primary"></div>
                 </div>
-                <div class="d-flex justify-content-center align-items-center bg-secondary card-body col-12 mb-2 pb-0 pt-0 pl-3 pr-3">
+                <div id="card3" class="d-flex justify-content-center align-items-center card-body col-12 mb-2 pb-0 pt-0 pl-3 pr-3">
                     <h1 class="text-primary bi bi-map-fill"></h1>
                     <div class="text-primary" id="location"></div>
                 </div>
                 <div class="row card d-flex justify-content-center align-items-center pl-0 pr-0 col-12">
-                    <div class="bg-secondary d-flex justify-content-center align-items-center col-12 pl-0 pr-0">
+                    <div id="card4" class="d-flex justify-content-center align-items-center col-12 pl-0 pr-0">
                         <div class="card-body col-6 pl-0 pr-0 border border-0">
                             <div class="text-primary d-flex justify-content-center col-12"><div id="precipProb"></div></div>
                             <div class="text-primary d-flex justify-content-center card-body col-12"><div id="windSpeed"></div></div>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="row card d-flex justify-content-center align-items-center pl-0 pr-0 col-12 mt-2">
-                    <div class="bg-secondary d-flex justify-content-center align-items-center col-12 pl-0 pr-0 border border-0">
+                    <div id="card5" class="d-flex justify-content-center align-items-center col-12 pl-0 pr-0 border border-0">
                         <div class="card-body d-flex justify-content-center align-items-center col-6 pl-0 pr-0 border border-0">
                             <div id="sunriseTime" class="text-primary"></div>
                         </div>
@@ -67,6 +67,8 @@
                         // console.log('IsDay1', blnIsDay)
                         if(blnIsDay == 1){
                             document.body.classList.add('bg-info');
+                            $('#card1').append(`class="bg-dark"`)
+
                         }
                         else{
                             document.body.classList.add('bg-dark')
