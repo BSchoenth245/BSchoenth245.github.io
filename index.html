@@ -59,7 +59,6 @@
                     // Get location data from lat/long
                     let latitude = position.coords.latitude;
                     let longitude = position.coords.longitude;
-
                     let URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=is_day&timezone=auto`
 
                     $.getJSON(URL).then(objData => {
@@ -82,7 +81,6 @@
                             document.getElementById("card5").classList.add('bg-secondary')
                         }
                     })
-
                     fillData(latitude,longitude)
                 },
                 (error) => {
@@ -105,13 +103,11 @@
                 });
             }
         }
-
         let date = new Date();
         date = date.toString()
         console.log(date)
         $('#date').append(`<h3 class="col-12">${date.slice(0,16)}</h3>`)
 
-        
         function fillData(strLat,strLong){
         // Start GLobal Variables
         const strBaseMeteoURL = `https://api.open-meteo.com/v1/forecast?latitude=${strLat}&longitude=${strLong}&current=cloud_cover,temperature_2m,is_day&minutely_15=relative_humidity_2m,wind_speed_10m&hourly=precipitation_probability&daily=sunrise,sunset,uv_index_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=auto`
@@ -124,7 +120,6 @@
             let strState = objData.address.state
             $('#location').append(`<h3 class="col-12 ">${strCity}, ${strState}</h3>`)
         })
-        
         $.getJSON(strBaseMeteoURL).then(objData => {
             console.log(objData.daily.sunrise)
             console.log(objData.daily.sunset)
@@ -133,7 +128,6 @@
             $('#sunriseTime').append(`<h3 class="col-12 pl-1 bi bi-sunrise-fill"> ${strSunrise.at(0).slice(11,16)}</h3>`)
             $('#sunsetTime').append(`<h3 class="col-12 pl-1 bi bi-sunset-fill"> ${strSunset.at(0).slice(11,16)}</h3>`)
         })
-
         $.getJSON(strBaseMeteoURL).then(objData => {
             let strPrecipProb = objData.hourly.precipitation_probability
             let strUVIndex = objData.daily.uv_index_max
@@ -152,7 +146,6 @@
             $('#UVIndex').append(`<h3 class="col-12 pl-1 bi bi-brightness-alt-high-fill"> Max UV ${strUVIndex.at(0)}</h3>`)
             }
         })
-
         $.getJSON(strBaseMeteoURL).then(objData => {
             console.log(objData.current.temperature_2m)
             let strTemp = objData.current.temperature_2m
