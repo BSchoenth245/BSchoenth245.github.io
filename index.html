@@ -119,10 +119,19 @@
         // End Global Variables
 
         $.getJSON(strBaseGeoURL).then(objData => {
+            let strCity = ''
             console.log(objData.address.city)
-            let strCity = objData.address.city
-            let strState = objData.address.state
+            if(objData.address.city){
+                strCity = objData.address.city
+            }
+            else if(objData.address.town){
+                strCity = objData.address.town
+            }
+            else{
+                strCity = 'undefined'
+            }
 
+            let strState = objData.address.state
             $('#location').append(`<h3 class="col-12 ">${strCity}, ${strState}</h3>`)
         })
         $.getJSON(strBaseMeteoURL).then(objData => {
