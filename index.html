@@ -180,7 +180,6 @@
         })
         $.getJSON(strBaseMeteoURL).then(objData => {
             console.log(objData.current.cloud_cover)
-            console.log(objData.minutely_15.is_day)
             console.log('is_day',objData.current.is_day)
             let strWeather = objData.current.cloud_cover
             let blnIsDay = objData.current.is_day
