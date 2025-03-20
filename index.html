@@ -108,7 +108,7 @@
         let date = new Date();
         date = date.toString()
         console.log(date)
-        $('#date').append(`<h3 class="col-12">${date.slice(0,16)}</h3>`)
+        $('#date').append(`<h3 class="col-12">${date.slice(0,3)} + ',' + ${date.slice(3,10)} + ',' + ${date.slice(10,16)}</h3>`)
 
         function fillData(strLat,strLong){
         console.log("Geocode city latitude: " + strLat)
