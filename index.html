@@ -111,11 +111,12 @@
         $('#date').append(`<h3 class="col-12">${date.slice(0,3)}, ${date.slice(3,10)}, ${date.slice(10,16)}</h3>`)
 
         function fillData(strLat,strLong){
-        console.log("Geocode city latitude: " + strLat)
-        console.log("Geocode state latitude: " + strLong)
+        console.log("Geocode latitude: " + strLat)
+        console.log("Geocode longitude: " + strLong)
         // Start GLobal Variables
         const strBaseMeteoURL = `https://api.open-meteo.com/v1/forecast?latitude=${strLat}&longitude=${strLong}&current=cloud_cover,temperature_2m,is_day&minutely_15=relative_humidity_2m,wind_speed_10m&hourly=precipitation_probability&daily=sunrise,sunset,uv_index_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=auto`
-        const strBaseGeoURL = `https://geocode.maps.co/reverse?lat=${strLat}&lon=${strLong}&api_key=67b8ceed830b4604932568guoea9e15`
+        //const strBaseGeoURL = `https://geocode.maps.co/reverse?lat=${strLat}&lon=${strLong}&api_key=67b8ceed830b4604932568guoea9e15`
+        const strBaseGeoURL = `https://geocode.maps.co/reverse?lat=38.864307&lon=-104.907417&api_key=67b8ceed830b4604932568guoea9e15`
         // End Global Variables
 
         $.getJSON(strBaseGeoURL).then(objData => {
